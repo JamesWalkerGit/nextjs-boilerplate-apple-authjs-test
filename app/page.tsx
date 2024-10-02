@@ -21,34 +21,36 @@ export default function Home() {
 
         <div style={styles.container}>
           <button
-            style={styles.loginButton}
+            style={styles.button}
             onClick={() => {
               signIn('github');
             }}>
             🧑‍💻 Github Login
           </button>
+
           <button
-            style={styles.loginButton}
+            style={styles.button}
             onClick={() => {
               signIn('apple');
             }}>
             🍎 Apple Login
           </button>
 
-          {session?.data?.user ?
-            <>Logged in as: {session?.data?.user?.email}</>
-            : null}
+          {session?.data?.user ? <>Logged in as: {session?.data?.user?.email}</> : null}
 
           {session?.status === 'authenticated' ?
             <>
               <button
-                style={styles.loginButton}
+                style={styles.button}
                 onClick={() => {
                   signOut()
                 }}>
                 ⬅️ Sign Out
               </button>
-            </> : null}
+            </>
+            : null
+          }
+
         </div>
       </main>
     </div>
@@ -57,7 +59,7 @@ export default function Home() {
 
 const createStyles = () => {
   return StyleSheet.create({
-    loginButton: {
+    button: {
       backgroundColor: 'white',
       color: 'black',
       width: 100,
