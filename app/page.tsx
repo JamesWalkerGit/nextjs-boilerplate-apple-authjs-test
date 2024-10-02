@@ -20,21 +20,27 @@ export default function Home() {
         />
 
         <div style={styles.container}>
-          <button
-            style={styles.button}
-            onClick={() => {
-              signIn('github');
-            }}>
-            🧑‍💻 Github Login
-          </button>
 
-          <button
-            style={styles.button}
-            onClick={() => {
-              signIn('apple');
-            }}>
-            🍎 Apple Login
-          </button>
+          {session?.status !== 'authenticated' ?
+            <>
+              <button
+                style={styles.button}
+                onClick={() => {
+                  signIn('github');
+                }}>
+                🧑‍💻 Github Login
+              </button>
+
+              <button
+                style={styles.button}
+                onClick={() => {
+                  signIn('apple');
+                }}>
+                🍎 Apple Login
+              </button>
+            </>
+            : null
+          }
 
           {session?.data?.user ? <>Logged in as: {session?.data?.user?.email}</> : null}
 
